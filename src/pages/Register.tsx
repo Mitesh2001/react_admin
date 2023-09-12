@@ -23,7 +23,7 @@ export default class Register extends Component {
       password: this.password,
       password_confirm: this.password_confirm,
     })
-    console.log(response);
+
     this.setState({
       redirect: true
     })
