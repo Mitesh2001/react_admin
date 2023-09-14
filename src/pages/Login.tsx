@@ -12,7 +12,7 @@ class Login extends Component {
 
     submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:8080/api/login', {
+        const response = await axios.post('login', {
             email: this.email,
             password: this.password
         })

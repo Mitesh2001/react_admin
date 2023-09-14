@@ -1,28 +1,38 @@
-import { Component } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, redirect } from "react-router-dom";
+import { User } from "../Models/User";
 
-class Nav extends Component {
-  render() {
-    return (
-      <header className="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-        <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
+const Nav = () => {
+  const [user, setUser] = useState(new User());
 
-        <ul className="navbar-nav flex-row d-md-none">
-          <li className="nav-item text-nowrap">
-            <button className="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get("user");
+      setUser(new User(
+        data.id,
+        data.first_name,
+        data.last_name,
+        data.email
+      ))
+    })()
+  }, [])
 
-            </button>
-          </li>
-          <li className="nav-item text-nowrap">
-            <button className="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-
-            </button>
-          </li>
-        </ul>
-        <div id="navbarSearch" className="navbar-search w-100 collapse">
-        </div>
-      </header>
-    )
+  const logout = async () => {
+    await axios.get('logout').then(() => { })
   }
+
+  return (
+    <>
+      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+        <ul className="my-2 my-md-0 mr-md-3">
+          <Link to={"/"} className="p-2 text-white">{user.name}</Link>
+          <Link to={"/login"} className="p-2 text-white" onClick={() => { logout() }}>Sign out</Link>
+        </ul>
+      </nav>
+    </>
+  )
 }
 
 export default Nav;
