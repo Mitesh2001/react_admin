@@ -2,10 +2,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Menu from './components/Menu';
 import Nav from './components/Nav';
-import Users from './pages/Users';
+import Users from './pages/users/Users';
 import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import UserCreate from './pages/users/UserCreate';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path='/' index element={<Dashboard />} />
           <Route path='/users' element={<Users />} />
+          <Route path='/users/create' element={<UserCreate />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
         </Routes>
