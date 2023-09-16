@@ -12,6 +12,7 @@ import Roles from './pages/roles/Roles';
 import RolesCreate from './pages/roles/RolesCreate';
 import RoleEdit from './pages/roles/RoleEdit';
 import Products from './pages/products/Products';
+import ProductCreate from './pages/products/ProductCreate';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/roles/create' element={<RolesCreate />} />
           <Route path='/roles/:id/edit' element={<RoleEdit />} />
           <Route path='/products' element={<Products />} />
+          <Route path='/products/create' element={<ProductCreate />} />
         </Routes>
       </BrowserRouter>
     </div>
