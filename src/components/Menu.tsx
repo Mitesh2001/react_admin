@@ -22,6 +22,11 @@ const Menu = () => {
                 Roles
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to={'/products'} className="nav-link d-flex align-items-center gap-2" aria-current="page">
+                Products
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

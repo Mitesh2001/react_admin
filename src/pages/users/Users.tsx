@@ -23,7 +23,7 @@ const Users = () => {
     }, [page])
 
     const next = () => { page < lastPage && setPage(page + 1) }
-    const prev = () => { page > 0 && setPage(page - 1) }
+    const prev = () => { page > 1 && setPage(page - 1) }
 
     const deleteUser = async (id: number) => {
         if (window.confirm('Are you sure to delete this user ?')) {
