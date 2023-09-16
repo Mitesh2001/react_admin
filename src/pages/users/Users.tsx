@@ -59,6 +59,7 @@ const Users = () => {
                                     <td>{user.role.name}</td>
                                     <td>
                                         <div className="btn-group">
+                                            <Link to={`/users/${user.id}/edit`} className="btn btn-sm btn-outline-secondary mx-2">Edit</Link>
                                             <a className="btn btn-sm btn-outline-danger" onClick={() => deleteUser(user.id)}>Delete</a>
                                         </div>
                                     </td>
