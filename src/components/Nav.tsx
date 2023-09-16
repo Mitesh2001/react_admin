@@ -24,13 +24,37 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
-        <ul className="my-2 my-md-0 mr-md-3">
-          <Link to={"/"} className="p-2 text-white">{user.name}</Link>
-          <Link to={"/login"} className="p-2 text-white" onClick={() => { logout() }}>Sign out</Link>
-        </ul>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+            <div className="d-flex" role="search">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link to={"/"} className="nav-link p-2">{user.name}</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/login"} className="nav-link p-2" onClick={() => { logout() }}>Sign out</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </nav>
+      {/* <nav classNameNameName="navbar navbar-expand-lg navbar-light bg-light">
+        <a classNameNameName="navbar-brand" href="#">Company name</a>
+        <ul classNameNameName="my-2 my-md-0 mr-md-3">
+          <Link to={"/"} classNameNameName="p-2 text-white">{user.name}</Link>
+          <Link to={"/login"} classNameNameName="p-2 text-white" onClick={() => { logout() }}>Sign out</Link>
+        </ul>
+      </nav> */}
     </>
   )
 }

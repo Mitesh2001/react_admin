@@ -28,8 +28,8 @@ const Wrapper: FC<WrapperProps> = ({ children }) => {
 
     return (
         <>
-            <Nav />
             <div className="container-fluid">
+                <Nav />
                 <div className='row'>
                     <Menu />
                     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
