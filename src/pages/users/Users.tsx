@@ -3,6 +3,7 @@ import Wrapper from "../../components/Wrapper";
 import axios from "axios";
 import { User } from "../../Models/User";
 import { Link } from "react-router-dom";
+import Paginator from "../../components/Paginator";
 
 const Users = () => {
 
@@ -21,9 +22,6 @@ const Users = () => {
     useEffect(() => {
         fetchUsers()
     }, [page])
-
-    const next = () => { page < lastPage && setPage(page + 1) }
-    const prev = () => { page > 1 && setPage(page - 1) }
 
     const deleteUser = async (id: number) => {
         if (window.confirm('Are you sure to delete this user ?')) {
@@ -68,12 +66,7 @@ const Users = () => {
                         }
                     </tbody>
                 </table>
-                <nav aria-label="Page navigation example">
-                    <ul className="pagination">
-                        <li className="page-item"><button className="page-link" onClick={() => prev()}>Previous</button></li>
-                        <li className="page-item"><button className="page-link" onClick={() => next()}>Next</button></li>
-                    </ul>
-                </nav>
+                <Paginator page={page} lastPage={lastPage} changePage={setPage} />
             </div>
         </Wrapper>
     )

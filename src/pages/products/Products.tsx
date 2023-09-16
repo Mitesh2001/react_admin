@@ -3,6 +3,7 @@ import Wrapper from "../../components/Wrapper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../../Models/Product";
+import Paginator from "../../components/Paginator";
 
 
 const Products = () => {
@@ -22,11 +23,6 @@ const Products = () => {
             (async () => await axios.delete(`products/${id}`))().then(() => fetchProducts())
         }
     }
-
-    const next = () => {
-        page < lastPage && setPage(page + 1)
-    }
-    const prev = () => { page > 1 && setPage(page - 1) }
 
     useEffect(() => {
         fetchProducts()
@@ -69,12 +65,7 @@ const Products = () => {
                         }
                     </tbody>
                 </table>
-                <nav aria-label="Page navigation example">
-                    <ul className="pagination">
-                        <li className="page-item"><button className="page-link" onClick={() => prev()}>Previous</button></li>
-                        <li className="page-item"><button className="page-link" onClick={() => next()}>Next</button></li>
-                    </ul>
-                </nav>
+                <Paginator page={page} lastPage={lastPage} changePage={setPage} />
             </div>
         </Wrapper>
     )
