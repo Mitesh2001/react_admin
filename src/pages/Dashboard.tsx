@@ -1,15 +1,47 @@
-import { Component, ReactNode } from "react";
+import { useEffect } from "react";
 import Wrapper from "../components/Wrapper";
+import * as c3 from 'c3'
+import axios from "axios";
 
-class Dashboard extends Component {
-    render(): ReactNode {
-        return (
-            <Wrapper>
-                <div>
-                    Dashboard
-                </div>
-            </Wrapper>
-        );
-    }
+const Dashboard = () => {
+
+    useEffect(() => {
+        (
+            async () => {
+                const chart = c3.generate({
+                    bindto: "#chart",
+                    data: {
+                        x: 'x',
+                        columns: [
+                            ['x'],
+                            ['Sales']
+                        ]
+                    },
+                    axis: {
+                        x: {
+                            type: 'timeseries',
+                            tick: {
+                                format: '%Y-%m-%d'
+                            }
+                        }
+                    }
+                });
+                const { data } = await axios.get('chart');
+                chart.load({
+                    columns: [
+                        ['x', ...data.map((r: any) => r.date)],
+                        ['Sales', ...data.map((r: any) => r.sum)]
+                    ]
+                })
+            }
+        )()
+    }, [])
+
+    return (
+        <Wrapper>
+            <div id="chart" />
+        </Wrapper>
+    );
+
 }
 export default Dashboard;
