@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import { ConfigureStore } from './redux/ConfigureStore';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,10 +13,13 @@ const root = ReactDOM.createRoot(
 
 axios.defaults.baseURL = "http://localhost:8080/api/";
 axios.defaults.withCredentials = true;
-
+const store = ConfigureStore();
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+
   </React.StrictMode>
 );
 
