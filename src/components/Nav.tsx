@@ -38,7 +38,7 @@ const Nav = () => {
             <div className="d-flex" role="search">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link to={"/"} className="nav-link p-2">{user.name}</Link>
+                  <Link to={"/profile"} className="nav-link p-2">{user.name}</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={"/login"} className="nav-link p-2" onClick={() => { logout() }}>Sign out</Link>
@@ -48,13 +48,6 @@ const Nav = () => {
           </div>
         </div>
       </nav>
-      {/* <nav classNameNameName="navbar navbar-expand-lg navbar-light bg-light">
-        <a classNameNameName="navbar-brand" href="#">Company name</a>
-        <ul classNameNameName="my-2 my-md-0 mr-md-3">
-          <Link to={"/"} classNameNameName="p-2 text-white">{user.name}</Link>
-          <Link to={"/login"} classNameNameName="p-2 text-white" onClick={() => { logout() }}>Sign out</Link>
-        </ul>
-      </nav> */}
     </>
   )
 }
