@@ -3,6 +3,7 @@ import Wrapper from '../../components/Wrapper'
 import axios from 'axios';
 import { Role } from '../../Models/Role';
 import { Navigate } from 'react-router-dom';
+import ImageUpload from '../../components/ImageUpload';
 
 const ProductCreate = () => {
 
@@ -39,9 +40,12 @@ const ProductCreate = () => {
                         <textarea onChange={e => setDescription(e.target.value)} className="form-control" id="description" />
                         <label htmlFor="description">Description</label>
                     </div>
-                    <div className="form-floating my-2">
-                        <input onChange={e => setImage(e.target.value)} type="text" className="form-control" placeholder='Image' id="image" />
+                    <div className="my-2">
                         <label htmlFor="title">Image</label>
+                        <div className='input-group'>
+                            <input onChange={e => setImage(e.target.value)} type="text" value={image} className="form-control" placeholder='Image' id="image" readOnly />
+                            <ImageUpload setUploadedUrl={setImage} />
+                        </div>
                     </div>
                     <div className="form-floating my-2">
                         <input onChange={e => setPrice(e.target.value)} type="number" className="form-control" placeholder='Price' id="price" />
